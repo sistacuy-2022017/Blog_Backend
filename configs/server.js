@@ -3,13 +3,18 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import { dbConnection } from "./mongo.js";
+import usersRoutes from "../src/users/user.routes.js";
+import apiLimiter from "../src/middlewares/validar-cant-peticiones.js";
+
 
 class Server {
   constructor() {
     this.app = express();
     this.port = process.env.PORT;
+    this.usersPath = "/blog/v1/users";
     this.middlewares();
     this.dbConnectionBlog();
+    this.routes();
   }
 
   async dbConnectionBlog() {
@@ -22,6 +27,11 @@ class Server {
     this.app.use(helmet());
     this.app.use(morgan("dev"));
     this.app.use(express.json());
+    this.app.use(apiLimiter);
+  }
+
+  routes() {
+    this.app.use(this.usersPath, usersRoutes);
   }
 
   listen() {
