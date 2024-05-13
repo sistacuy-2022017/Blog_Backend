@@ -1,8 +1,7 @@
 import jwt from "jsonwebtoken";
 import Admin from "../users/users.model.js";
-import categoryModel from "../categorias/category.model.js";
 
-export const validarJWT = async (req, res, next) => {
+/*export const validarJWT = async (req, res, next) => {
   const token = req.header("x-token");
 
   if (!token) {
@@ -11,8 +10,11 @@ export const validarJWT = async (req, res, next) => {
     });
   }
 
+  console.log("Token recibido:", token);
+
   try {
-    const decoded = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
+    const decoded = jwt.verify(token, process.env.TOKEN_KEY);
+    console.log("Token decodificado:", decoded);
     const adminUsers = await Admin.findById(decoded.uid);
 
     if (!adminUsers) {
@@ -27,7 +29,7 @@ export const validarJWT = async (req, res, next) => {
       });
     }
 
-    req.adminUsers = adminUsers;
+    req.user = adminUsers;
     next();
   } catch (error) {
     console.error("Error al verificar el token JWT:", error);
@@ -35,4 +37,24 @@ export const validarJWT = async (req, res, next) => {
       msg: "Token JWT no válido",
     });
   }
+};*/
+
+export const validarJWT = (req, res, next) => {
+  let token = req.body.token || req.query.token || req.headers["authorization"];
+
+  if (!token) {
+    return res.status(401).send("A token is required for authentication");
+  }
+
+  try {
+    token = token.replace(/^Bearer\s+/, "");
+    const decoded = jwt.verify(token, process.env.TOKEN_KEY);
+
+    req.user = decoded;
+  } catch (e) {
+    console.log(e);
+    return res.status(401).send("Invalid Token");
+  }
+
+  return next();
 };
