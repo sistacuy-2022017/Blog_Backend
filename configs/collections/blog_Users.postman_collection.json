@@ -1,0 +1,46 @@
+{
+	"info": {
+		"_postman_id": "4af2436e-52f2-47de-b19f-d9bac5c5c6b7",
+		"name": "blog_Users",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "34430314"
+	},
+	"item": [
+		{
+			"name": "addUsers",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"sebastiano\",\r\n    \"email\": \"sebs@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"roleUser\": \"ADMIN_ROLE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3002/blog/v1/users/addUsers"
+			},
+			"response": []
+		},
+		{
+			"name": "logUsers",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"sebs@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3002/blog/v1/auth/login"
+			},
+			"response": []
+		}
+	]
+}

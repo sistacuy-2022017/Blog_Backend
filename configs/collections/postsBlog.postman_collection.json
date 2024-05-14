@@ -1,0 +1,48 @@
+{
+	"info": {
+		"_postman_id": "3f5d1fc6-8fd4-4935-9f9e-6f4d10d5b518",
+		"name": "postsBlog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "34430314"
+	},
+	"item": [
+		{
+			"name": "addPost",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjQwMjIwNzA3OTIzNDYwNTRiMjkxNjYiLCJpYXQiOjE3MTU2NjE5MDgsImV4cCI6MTcxNTY5MDcwOH0.1k7PfqPHtuNBcPPOKZgu84IIyQ240W2ExmELJNUWzhA"
+					}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjQwMjIwNzA3OTIzNDYwNTRiMjkxNjYiLCJpYXQiOjE3MTU2NjE5MDgsImV4cCI6MTcxNTY5MDcwOH0.1k7PfqPHtuNBcPPOKZgu84IIyQ240W2ExmELJNUWzhA"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"prueba02\",\r\n    \"category\": \"tv\",\r\n    \"description\": \"a12\",\r\n    \"postUrl\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNiEtP5Qteo84r8zs7bLPF0awaGMgBzxVnhw&usqp=CAU\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3002/blog/v1/posts/createPost"
+			},
+			"response": []
+		},
+		{
+			"name": "getPostComments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3002/blog/v1/posts/getPosts"
+			},
+			"response": []
+		}
+	]
+}

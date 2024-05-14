@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "1758da37-3085-4086-b1e2-3c6c3c61a212",
+		"name": "commentsBlog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "34430314"
+	},
+	"item": [
+		{
+			"name": "addComment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjQwMjIwNzA3OTIzNDYwNTRiMjkxNjYiLCJpYXQiOjE3MTU2NjE5MDgsImV4cCI6MTcxNTY5MDcwOH0.1k7PfqPHtuNBcPPOKZgu84IIyQ240W2ExmELJNUWzhA"
+					}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjQwMjIwNzA3OTIzNDYwNTRiMjkxNjYiLCJpYXQiOjE3MTU2NjE5MDgsImV4cCI6MTcxNTY5MDcwOH0.1k7PfqPHtuNBcPPOKZgu84IIyQ240W2ExmELJNUWzhA"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"comment\": \"el nano es un insano2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3002/blog/v1/comments/createComment/66406fdc14df1e76079f1456"
+			},
+			"response": []
+		}
+	]
+}
