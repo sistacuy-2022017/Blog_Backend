@@ -39,7 +39,7 @@ import Admin from "../users/users.model.js";
   }
 };*/
 
-export const validarJWT = (req, res, next) => {
+export const validarJWT = async (req, res, next) => {
   let token = req.body.token || req.query.token || req.headers["authorization"];
 
   if (!token) {
@@ -49,8 +49,9 @@ export const validarJWT = (req, res, next) => {
   try {
     token = token.replace(/^Bearer\s+/, "");
     const decoded = jwt.verify(token, process.env.TOKEN_KEY);
+    const adminUserso = await Admin.findById(decoded.uid);
 
-    req.user = decoded;
+    req.user = adminUserso;
   } catch (e) {
     console.log(e);
     return res.status(401).send("Invalid Token");
